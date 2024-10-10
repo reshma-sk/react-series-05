@@ -1,38 +1,39 @@
-import React, { useState } from 'react'
-import ReactDOM from 'react-dom/client'
+import React, {useState} from 'react';
 import resList from '../utils/mockData'
 import RestaurantCard from './RestaurantCard'
+
+import { CiSearch } from "react-icons/ci";
+
 const Body = ()=>{
-    const[restaurantList,setRestaurantList]= useState(resList)
+    const[restaurantList,setRestaurantList] = useState(resList)
     const[showButton,setShowButton] = useState(true)
-    console.log(restaurantList);
-    const filterRestaurantList = ()=>{
-        const filteredRestaurant = restaurantList.filter(
-            (res)=> res.info.avgRating > 4.3    
-        )
-        setRestaurantList(filteredRestaurant)
+    const topRatedRestaurants = ()=>{
+        const topRated = restaurantList.filter((res)=>res.info.avgRating > 4)
+        setRestaurantList(topRated)
         setShowButton(false)
     }
     return(
-        <div className='body'>
-            <div className='search-box'>
-                <input placeholder="search a restaurant you want..." />
-            </div>
-            <div className='filter'>
-                {showButton &&
-                 (<button className='filter-btn' onClick={filterRestaurantList}>Top Restaurabts</button>)
-                }
-                
-            </div>
-            <div className='restaurant-container'>
-                {restaurantList.map((resturant)=>{
-                  return(
-                    <RestaurantCard key = {resturant.info.id} restaurantData = {resturant}/>
+        <div className='flex flex-col gap-8 justify-between items-center mt-3'>
 
-                  )
-                })}
+            <div className='flex justify-between items-center'>
+                <div className='flex border border-black'>
+                    <input type="text"  className='w-50 h-auto' placeholder='search'/>   
+                    <CiSearch/> 
+                </div>
+                
+                {showButton &&
+                <div className='border border-black ml-12'>
+                    <button className=' bg-orange-400 p-2 border border-black' onClick = {topRatedRestaurants}>Top Restaurants</button>
+                </div>
+                }       
             </div>
-            
+
+            <div className='flex flex-wrap'>
+                {restaurantList.map((restaurant)=>(
+                    <RestaurantCard key = {restaurant.info.id} restaurantData={restaurant}/>        
+                ))}
+            </div>
+
         </div>
     )
 }

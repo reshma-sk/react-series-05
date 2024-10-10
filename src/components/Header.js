@@ -1,17 +1,18 @@
 const Header = ()=>{
     return(
-        <div className="header">
-           <div className="logo-container">
-            <img src="" alt="" />
-           </div>
-           <div className="nav-items">
-            <ul>
-                <li>Home</li>
-                <li>About</li>
-                <li>Contact</li>
-                <li>Cart</li>
-            </ul>
-           </div>
+        <div className = "flex justify-between items-center border border-black">
+            <div>
+                <img className='p-4' src="" alt="Logo_img" />
+            </div>
+            <div className="p-4">
+                <ul className='flex font-bold'>
+                    <li className='m-3 hover:bg-orange-300'>Home</li>
+                    <li className='m-3 hover:bg-orange-300'>About</li>
+                    <li className='m-3 hover:bg-orange-300'>Contact Us</li>
+                    <li className='m-3 hover:bg-orange-300'>Cart</li>            
+                </ul>
+            </div>
+
         </div>
     )
 }

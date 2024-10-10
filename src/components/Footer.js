@@ -1,16 +1,13 @@
 import { LINKEDIN_URL } from "../utils/constants"
 const Footer = ()=>{
-    const year = new Date().getFullYear()
     return(
-        <div className="footer">
-            Created By
-            <span>
-                <a href={LINKEDIN_URL} target="blank">Reshma Shaik</a>
-            </span>
-            <span>&copy;</span>
-            {year}
+        <div className='w-full text-center p-5'>
+            Created by
+            <span>❤️</span>
+            <a href={LINKEDIN_URL}>Reshma Shaik </a>
+            <span>&copy; </span>
             <strong>
-                <span> spoons & Forks</span>
+                Spoons & <span>Forks</span>
             </strong>
         </div>
     )

@@ -1,38 +1,24 @@
 import React from "react";
-
 import { CDN_URL } from "../utils/constants";
-
-
-const RestaurantCard = (props)=>{
-    const{restaurantData} = props;
+import { MdStarRate } from "react-icons/md";
+const RestaurantCard = ({restaurantData})=>{
     console.log(restaurantData);
-    const{ cloudinaryImageId,
-    name,
-    areaName,
-    avgRating,
-    cuisines,
-    costForTwo,
-    deliveryTime,
-    } = restaurantData?.info;
+    
+    const{name,costForTwo,cloudinaryImageId,avgRating} = restaurantData?.info;
+    
     return(
-        <div className="restaurant-card">
-            <img src={CDN_URL + cloudinaryImageId} alt="" className="restaurant-logo" />
-            <div className="restaurant-details">
-                <h3 className="restaurant-name">{name.slice(0,20)}</h3>
-                <div className="esa-rating">
-                    <h4 className="rating">
-                        <span>{avgRating}*</span>
-                    </h4>
-                    <h4>{costForTwo}</h4>
-                    <h4>{deliveryTime} mins</h4>
-                </div>
-                <p className="cuisine">
-                    {cuisines.join(', ')}
-                </p>
-                <p className="location">{areaName}</p>
-            </div>
-            
+        <div className='flex flex-col m-3 border border-yellow-400 w-44'>
+            <img src={CDN_URL +cloudinaryImageId } alt="" />
+            <h5>{name.slice(0,13)}
+                {name.length > 13 ? '...' : ''}
+            </h5>
+            <h4>{costForTwo}</h4>
+            <h4 className='flex'>
+                <MdStarRate className="border-6" style={avgRating > 4 ? {backgroundColor:'green'}:{backgroundColor:'red'}}/>
+                <span className='ml-1'>{avgRating}</span>
+            </h4>
         </div>
     )
 }
+
 export default RestaurantCard;
