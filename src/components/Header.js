@@ -1,8 +1,9 @@
+import { LOGO_URL } from "../utils/constants";
 const Header = ()=>{
     return(
         <div className = "flex justify-between items-center border border-black">
             <div>
-                <img className='p-4' src="" alt="Logo_img" />
+                <img className='p-4' src={LOGO_URL} alt="Logo_img" />
             </div>
             <div className="p-4">
                 <ul className='flex font-bold'>
